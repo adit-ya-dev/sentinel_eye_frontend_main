@@ -1,11 +1,9 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import ThemeToggle from "@/components/theme-toggle";
-
 import {
   LayoutDashboard,
   Map,
@@ -18,7 +16,6 @@ import {
   LogOut,
   Shield,
 } from "lucide-react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,7 +23,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -39,7 +35,6 @@ const navItems = [
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-
   const [fontSize, setFontSize] = useState(100);
 
   useEffect(() => {
@@ -57,7 +52,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-30 h-[80px] flex items-center px-6 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex-1 hidden md:block" />
-
         <div className="flex flex-1 items-center justify-center gap-6">
           <div className="relative w-14 h-14">
             <Image
@@ -68,12 +62,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               priority
             />
           </div>
-
           <h1 className="text-2xl md:text-3xl font-black tracking-[0.35em] text-primary">
             SENTINEL EYE
           </h1>
         </div>
-
         {/* CONTROLS */}
         <div className="flex flex-1 items-center justify-end gap-4 text-sm">
           <div className="flex items-center gap-3 px-4 py-2 rounded-full border bg-muted/40">
@@ -84,7 +76,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             >
               A-
             </button>
-
             <button
               onClick={() => adjustFont("reset")}
               className="px-2 py-1 rounded-md font-semibold transition hover:bg-accent focus:outline-none focus:ring-2 focus:ring-primary/30"
@@ -92,7 +83,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             >
               A
             </button>
-
             <button
               onClick={() => adjustFont("increase")}
               className="px-2 py-1 rounded-md transition hover:bg-accent focus:outline-none focus:ring-2 focus:ring-primary/30"
@@ -100,9 +90,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             >
               A+
             </button>
-
             <span className="mx-1 text-muted-foreground">|</span>
-
             <ThemeToggle />
           </div>
         </div>
@@ -114,9 +102,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           {navItems.map((item) => {
             const Icon = item.icon;
 
-            // ✅ active also works for nested routes
-            const active =
-              pathname === item.href || pathname.startsWith(item.href + "/");
+            // Make Dashboard active also on root path "/"
+            const isActive =
+              pathname === item.href ||
+              pathname.startsWith(item.href + "/") ||
+              (item.href === "/dashboard" && pathname === "/");
 
             return (
               <Link
@@ -125,32 +115,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 className={[
                   "group relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                   "focus:outline-none focus:ring-2 focus:ring-primary/25",
-                  active
+                  isActive
                     ? "bg-muted text-foreground"
                     : "text-muted-foreground hover:bg-muted/60 hover:text-foreground",
                 ].join(" ")}
               >
-                {/* Left indicator (subtle like shadcn) */}
                 <span
                   className={[
                     "absolute left-0 top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-r-full transition-all",
-                    active
+                    isActive
                       ? "bg-primary opacity-100"
                       : "bg-primary/40 opacity-0 group-hover:opacity-100",
                   ].join(" ")}
                 />
-
-                {/* Icon with slight hover move */}
                 <Icon
                   size={18}
                   className={[
                     "transition-transform duration-200",
-                    active
+                    isActive
                       ? "text-foreground"
                       : "text-muted-foreground group-hover:text-foreground group-hover:translate-x-[1px]",
                   ].join(" ")}
                 />
-
                 <span className="transition-transform duration-200 group-hover:translate-x-[1px]">
                   {item.name}
                 </span>
@@ -175,34 +161,27 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     className="object-cover"
                   />
                 </div>
-
                 <div className="flex-1 text-left leading-tight">
                   <p className="text-sm font-semibold">Aditya Pamar</p>
                   <p className="text-xs text-muted-foreground">Premium</p>
                 </div>
-
                 <ChevronDown className="w-4 h-4 text-muted-foreground" />
               </Button>
             </DropdownMenuTrigger>
-
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuItem>
                 <User className="w-4 h-4 mr-2" />
                 Profile
               </DropdownMenuItem>
-
               <DropdownMenuItem>
                 <Shield className="w-4 h-4 mr-2" />
                 Security
               </DropdownMenuItem>
-
               <DropdownMenuItem>
                 <Settings className="w-4 h-4 mr-2" />
                 Settings
               </DropdownMenuItem>
-
               <DropdownMenuSeparator />
-
               <DropdownMenuItem className="text-red-600">
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out

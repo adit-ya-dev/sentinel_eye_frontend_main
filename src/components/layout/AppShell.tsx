@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { ThemeToggle } from "@/components/theme-toggle";
+import ThemeToggle from "@/components/theme-toggle";
 
 import {
   LayoutDashboard,

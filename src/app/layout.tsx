@@ -6,6 +6,11 @@ import AppShell from "@/components/layout/AppShell";
 export const metadata: Metadata = {
   title: "Sentinel Eye",
   description: "Cloud-native land-use change detection system",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

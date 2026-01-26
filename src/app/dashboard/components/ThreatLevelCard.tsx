@@ -1,50 +1,58 @@
 "use client";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle, TrendingDown, Activity } from "lucide-react";
 
 export default function ThreatLevelCard() {
   return (
-    <Card className="bg-[#071225] border-white/10 shadow-xl h-full">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-xs uppercase tracking-widest text-white/40">
-          Threat Level
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="mt-4">
-          <h2 className="text-4xl font-black text-red-500">CRITICAL</h2>
-          <p className="mt-2 text-sm text-white/60">
-            Forest → Urban transition exceeded 20% threshold.
-          </p>
-        </div>
+    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 shadow-2xl h-full">
+      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-6">
+        Threat Level
+      </p>
 
-        <div className="mt-6 space-y-3">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-2">
-              <TrendingDown className="h-4 w-4 text-red-400" />
-              <span className="text-white/60">Forest Loss</span>
-            </div>
-            <span className="font-bold text-white">24%</span>
-          </div>
+      <div className="space-y-1">
+        <h2 className="text-4xl font-black tracking-tighter text-red-500">
+          CRITICAL
+        </h2>
+        <p className="text-xs text-white/50 leading-relaxed">
+          Forest → Urban transition exceeded{" "}
+          <span className="text-white font-bold">20%</span> threshold.
+        </p>
+      </div>
 
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-2">
-              <Activity className="h-4 w-4 text-yellow-400" />
-              <span className="text-white/60">NDVI Drop</span>
+      <div className="mt-8 space-y-4">
+        {[
+          {
+            label: "Forest Loss",
+            val: "24%",
+            icon: TrendingDown,
+            color: "text-red-400",
+          },
+          {
+            label: "NDVI Drop",
+            val: "0.31",
+            icon: Activity,
+            color: "text-yellow-400",
+          },
+          {
+            label: "Alert Confidence",
+            val: "0.92",
+            icon: AlertTriangle,
+            color: "text-orange-400",
+          },
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="flex items-center justify-between border-b border-white/5 pb-2"
+          >
+            <div className="flex items-center gap-3">
+              <item.icon className={`h-4 w-4 ${item.color}`} />
+              <span className="text-xs font-medium text-white/60">
+                {item.label}
+              </span>
             </div>
-            <span className="font-bold text-white">0.31</span>
+            <span className="text-sm font-bold text-white">{item.val}</span>
           </div>
-
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-2">
-              <AlertTriangle className="h-4 w-4 text-orange-400" />
-              <span className="text-white/60">Alert Confidence</span>
-            </div>
-            <span className="font-bold text-white">0.92</span>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+        ))}
+      </div>
+    </div>
   );
 }

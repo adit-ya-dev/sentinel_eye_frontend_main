@@ -53,6 +53,19 @@ export interface AnalysisImages {
 }
 
 /**
+ * Dashboard statistics for overview page
+ */
+export interface DashboardStats {
+  meanNdvi: number;
+  forestLossPercent: number;
+  urbanGainPercent: number;
+  scansToday: number;
+  totalScans: number;
+  activeAlerts: number;
+  criticalAlerts: number;
+}
+
+/**
  * Full response shape from a single analysis request (/api/analyze or similar)
  */
 export interface AnalyzeResponse {

@@ -7,7 +7,9 @@ export const mockDashboardStats: DashboardStats = {
   forestLossPercent: 24,
   urbanGainPercent: 13,
   scansToday: 8,
-  threatLevel: "CRITICAL",
+  totalScans: 156,
+  activeAlerts: 12,
+  criticalAlerts: 3,
 };
 
 export const mockRecentScans: Scan[] = [

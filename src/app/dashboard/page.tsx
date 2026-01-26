@@ -1,5 +1,4 @@
 "use client";
-
 import DashboardHeader from "./components/DashboardHeader";
 import StatsCards from "./components/StatsCards";
 import ThreatLevelCard from "./components/ThreatLevelCard";
@@ -11,7 +10,7 @@ export default function DashboardPage() {
   return (
     <div className="w-full space-y-6">
       <DashboardHeader />
-      
+
       <div className="space-y-6">
         <StatsCards />
 

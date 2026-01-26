@@ -12,7 +12,7 @@ export default function ChangeOverlayPreview({
       </p>
 
       <div className="mt-4 h-[240px] rounded-xl border border-white/10 bg-black/30 flex items-center justify-center text-white/60">
-        {result?.overlays?.changeMaskUrl
+        {result?.images?.changeMaskUrl
           ? "Overlay Image Loaded"
           : "Overlay will appear here after analysis"}
       </div>

@@ -1,60 +1,67 @@
 "use client";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, TrendingDown, Droplets } from "lucide-react";
 
 export default function AlertsPreview() {
   const alerts = [
-    { type: "Illegal Encroachment", time: "5 min ago", level: "CRITICAL", icon: AlertTriangle },
-    { type: "NDVI Drop Detected", time: "18 min ago", level: "WARNING", icon: TrendingDown },
-    { type: "Waterbody Shrink", time: "1 hour ago", level: "MODERATE", icon: Droplets },
+    {
+      type: "Illegal Encroachment",
+      time: "5 min ago",
+      level: "CRITICAL",
+      icon: AlertTriangle,
+      color: "text-red-400",
+    },
+    {
+      type: "NDVI Drop Detected",
+      time: "18 min ago",
+      level: "WARNING",
+      icon: TrendingDown,
+      color: "text-yellow-400",
+    },
+    {
+      type: "Waterbody Shrink",
+      time: "1 hour ago",
+      level: "MODERATE",
+      icon: Droplets,
+      color: "text-blue-400",
+    },
   ];
 
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case "CRITICAL":
-        return "bg-red-500 text-white";
-      case "WARNING":
-        return "bg-yellow-500 text-black";
-      case "MODERATE":
-        return "bg-blue-500 text-white";
-      default:
-        return "bg-gray-500 text-white";
-    }
-  };
-
   return (
-    <Card className="bg-[#071225] border-white/10 shadow-xl h-full">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-xs uppercase tracking-widest text-white/40">
-          Alerts Preview
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="mt-4 space-y-3">
-          {alerts.map((a, i) => {
-            const Icon = a.icon;
-            return (
-              <div
-                key={i}
-                className="rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Icon className="h-4 w-4 text-white/60" />
-                    <p className="font-semibold text-white">{a.type}</p>
-                  </div>
-                  <Badge className={getLevelColor(a.level)}>
-                    {a.level}
-                  </Badge>
-                </div>
-                <p className="mt-1 text-xs text-white/50">{a.time}</p>
+    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 shadow-2xl h-full">
+      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-6">
+        Alerts Preview
+      </p>
+      <div className="space-y-3">
+        {alerts.map((a, i) => (
+          <div
+            key={i}
+            className="group flex flex-col gap-2 rounded-xl border border-white/5 bg-white/5 p-4 transition-all hover:bg-white/10 hover:border-white/20"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <a.icon className={`h-4 w-4 ${a.color}`} />
+                <p className="text-xs font-bold text-white tracking-tight">
+                  {a.type}
+                </p>
               </div>
-            );
-          })}
-        </div>
-      </CardContent>
-    </Card>
+              <span
+                className={`text-[9px] font-black px-2 py-0.5 rounded border ${
+                  a.level === "CRITICAL"
+                    ? "border-red-500/30 text-red-400 bg-red-500/10"
+                    : a.level === "WARNING"
+                      ? "border-yellow-500/30 text-yellow-400 bg-yellow-500/10"
+                      : "border-blue-500/30 text-blue-400 bg-blue-500/10"
+                }`}
+              >
+                {a.level}
+              </span>
+            </div>
+            <p className="text-[10px] text-white/30 font-medium pl-7">
+              {a.time}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

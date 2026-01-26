@@ -1,5 +1,7 @@
 "use client";
 
+import { Scan, Loader2, MapPin } from "lucide-react";
+
 export default function AnalyzeButton({
   loading,
   disabled,
@@ -10,27 +12,40 @@ export default function AnalyzeButton({
   onClick: () => void;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#071225] p-5 shadow-xl flex items-center justify-center">
+    <div className="w-full">
       <button
         onClick={onClick}
         disabled={loading || disabled}
-        className={`w-full rounded-xl px-4 py-3 text-sm font-black tracking-wide transition-all transform ${
+        className={`w-full group relative flex items-center justify-center gap-3 px-6 py-4 rounded-xl border transition-all duration-200 text-xs font-bold tracking-widest uppercase ${
           loading || disabled
-            ? "bg-white/10 text-white/40 cursor-not-allowed scale-95"
-            : "bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-500 hover:to-blue-400 hover:scale-105 shadow-lg hover:shadow-xl"
+            ? "bg-transparent border-white/10 text-white/30 cursor-not-allowed"
+            : "bg-white text-black border-white hover:bg-zinc-200 active:scale-[0.98]"
         }`}
       >
         {loading ? (
-          <span className="flex items-center justify-center gap-2">
-            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            SCANNING...
-          </span>
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>Scanning Region...</span>
+          </>
         ) : disabled ? (
-          "SELECT AREA FIRST 📍"
+          <>
+            <MapPin className="w-4 h-4 opacity-40" />
+            <span>Select Area</span>
+          </>
         ) : (
-          "ANALYZE REGION 🚀"
+          <>
+            <Scan className="w-4 h-4" />
+            <span>Run Analysis</span>
+          </>
         )}
       </button>
+
+      {/* Optional: Subtle help text below the button */}
+      {!loading && disabled && (
+        <p className="text-[10px] text-center mt-2 text-white/40 tracking-tight">
+          Awaiting Area of Interest (AOI) selection
+        </p>
+      )}
     </div>
   );
 }

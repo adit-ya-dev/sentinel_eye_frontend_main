@@ -12,12 +12,12 @@ export default function ScanImagesCompare({
   data: ScanResultResponse;
 }) {
   return (
-    <div className="glass-card rounded-2xl p-5 shadow-xl">
-      <p className="text-xs uppercase tracking-widest text-white/40">
+    <div className="rounded-2xl border border-border bg-card p-5 shadow-xl">
+      <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">
         Before vs After
       </p>
 
-      <div className="mt-4 overflow-hidden rounded-xl border border-white/10">
+      <div className="mt-4 overflow-hidden rounded-xl border border-border bg-black shadow-inner">
         <ReactCompareSlider
           itemOne={
             <ReactCompareSliderImage
@@ -34,7 +34,7 @@ export default function ScanImagesCompare({
         />
       </div>
 
-      <div className="mt-3 grid grid-cols-2 gap-3 text-xs text-white/60">
+      <div className="mt-3 grid grid-cols-2 gap-3 text-[10px] font-mono uppercase tracking-tight text-muted-foreground">
         <p>Before: {data.timestamps.before}</p>
         <p className="text-right">After: {data.timestamps.after}</p>
       </div>

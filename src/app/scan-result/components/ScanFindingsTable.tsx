@@ -1,4 +1,11 @@
-import type { ScanResultResponse } from "@/types/scanResult";
+import type { ScanResultResponse, ScanSeverity } from "@/types/scanResult";
+
+const severityStyles: Record<ScanSeverity, string> = {
+  LOW: "bg-green-500/10 text-green-600 dark:text-green-400",
+  MODERATE: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400",
+  WARNING: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
+  CRITICAL: "bg-red-500/10 text-red-600 dark:text-red-400",
+};
 
 export default function ScanFindingsTable({
   data,
@@ -37,18 +44,19 @@ export default function ScanFindingsTable({
                 className="text-foreground/80 transition-colors hover:bg-muted/30"
               >
                 <td className="p-3 font-semibold">{f.type}</td>
+
                 <td className="p-3">
                   <span
                     className={`inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-tight ${
-                      f.severity === "High"
-                        ? "bg-red-500/10 text-red-600 dark:text-red-400"
-                        : "bg-primary/10 text-primary"
+                      severityStyles[f.severity]
                     }`}
                   >
                     {f.severity}
                   </span>
                 </td>
+
                 <td className="p-3 font-mono">{f.areaHectares.toFixed(1)}</td>
+
                 <td className="p-3 font-mono">
                   {Math.round(f.confidence * 100)}%
                 </td>

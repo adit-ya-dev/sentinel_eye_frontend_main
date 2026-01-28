@@ -19,4 +19,5 @@ export interface Alert {
 
   regionName: string;
   recommendation: string[];
+
 }

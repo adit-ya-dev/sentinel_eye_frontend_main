@@ -241,10 +241,6 @@ export default function LandingPage() {
                   Multi-spectral imaging from Sentinel-2 satellites with 10m
                   spatial resolution and 5-day temporal frequency.
                 </p>
-                <div className="flex items-center gap-2 text-sm text-slate-400">
-                  <span>Learn more</span>
-                  <ChevronRight className="h-4 w-4" />
-                </div>
               </div>
             </motion.div>
 
@@ -279,10 +275,6 @@ export default function LandingPage() {
                   Normalized Difference Vegetation Index tracking with
                   time-series analysis and anomaly detection.
                 </p>
-                <div className="flex items-center gap-2 text-sm text-slate-400">
-                  <span>View metrics</span>
-                  <ChevronRight className="h-4 w-4" />
-                </div>
               </div>
             </motion.div>
 
@@ -317,10 +309,6 @@ export default function LandingPage() {
                   Semantic segmentation and pixel-level comparison for
                   land-cover classification and change mapping.
                 </p>
-                <div className="flex items-center gap-2 text-sm text-slate-400">
-                  <span>Explore detection</span>
-                  <ChevronRight className="h-4 w-4" />
-                </div>
               </div>
             </motion.div>
           </div>

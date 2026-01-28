@@ -5,6 +5,7 @@ export type DataLogsResponse = {
   logs: ScanResult[];
 };
 
+
 export type DataLogsFilters = {
   query: string;
   severity: "ALL" | ScanSeverity;

@@ -190,7 +190,7 @@ export default function LandingPage() {
       {/* Core Triad with Images */}
       <section
         id="features"
-        className="relative py-24 px-6 border-t border-slate-800"
+        className="relative py-24 px-6 border-t border-slate-800 bg-slate-950"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -200,7 +200,7 @@ export default function LandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
               The Core Triad
             </h2>
             <p className="text-lg text-slate-400">
@@ -215,10 +215,8 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="group relative rounded-xl border border-slate-700 overflow-hidden bg-slate-900/50 backdrop-blur-sm hover:border-slate-600 transition-all cursor-pointer"
+              className="group relative rounded-xl border border-slate-700 overflow-hidden bg-slate-900/50 backdrop-blur-sm transition-colors"
             >
-              {/* Image - Auto-fits any dimension */}
               <div className="relative w-full h-64 overflow-hidden">
                 <Image
                   src="/satellite.png"
@@ -227,10 +225,9 @@ export default function LandingPage() {
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+                {/* Removed the dark gradient overlay that was hiding the image */}
               </div>
 
-              {/* Content */}
               <div className="p-8">
                 <div className="h-12 w-12 rounded-lg bg-slate-700/50 border border-slate-600 flex items-center justify-center mb-4">
                   <Globe className="h-6 w-6 text-white" />
@@ -238,7 +235,7 @@ export default function LandingPage() {
                 <h3 className="text-2xl font-bold text-white mb-3">
                   Satellite Analysis
                 </h3>
-                <p className="text-slate-300 leading-relaxed mb-4">
+                <p className="text-slate-300 leading-relaxed">
                   Multi-spectral imaging from Sentinel-2 satellites with 10m
                   spatial resolution and 5-day temporal frequency.
                 </p>
@@ -251,10 +248,8 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
-              className="group relative rounded-xl border border-slate-700 overflow-hidden bg-slate-900/50 backdrop-blur-sm hover:border-slate-600 transition-all cursor-pointer"
+              className="group relative rounded-xl border border-slate-700 overflow-hidden bg-slate-900/50 backdrop-blur-sm transition-colors"
             >
-              {/* Image - Auto-fits any dimension */}
               <div className="relative w-full h-64 overflow-hidden">
                 <Image
                   src="/ndvi_monitoring.png"
@@ -263,10 +258,8 @@ export default function LandingPage() {
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
               </div>
 
-              {/* Content */}
               <div className="p-8">
                 <div className="h-12 w-12 rounded-lg bg-slate-700/50 border border-slate-600 flex items-center justify-center mb-4">
                   <TrendingUp className="h-6 w-6 text-white" />
@@ -274,7 +267,7 @@ export default function LandingPage() {
                 <h3 className="text-2xl font-bold text-white mb-3">
                   NDVI Monitoring
                 </h3>
-                <p className="text-slate-300 leading-relaxed mb-4">
+                <p className="text-slate-300 leading-relaxed">
                   Normalized Difference Vegetation Index tracking with
                   time-series analysis and anomaly detection.
                 </p>
@@ -287,10 +280,8 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              whileHover={{ scale: 1.02 }}
-              className="group relative rounded-xl border border-slate-700 overflow-hidden bg-slate-900/50 backdrop-blur-sm hover:border-slate-600 transition-all cursor-pointer"
+              className="group relative rounded-xl border border-slate-700 overflow-hidden bg-slate-900/50 backdrop-blur-sm transition-colors"
             >
-              {/* Image - Auto-fits any dimension */}
               <div className="relative w-full h-64 overflow-hidden">
                 <Image
                   src="/change.png"
@@ -299,10 +290,8 @@ export default function LandingPage() {
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
               </div>
 
-              {/* Content */}
               <div className="p-8">
                 <div className="h-12 w-12 rounded-lg bg-slate-700/50 border border-slate-600 flex items-center justify-center mb-4">
                   <AlertTriangle className="h-6 w-6 text-white" />
@@ -310,7 +299,7 @@ export default function LandingPage() {
                 <h3 className="text-2xl font-bold text-white mb-3">
                   Change Detection
                 </h3>
-                <p className="text-slate-300 leading-relaxed mb-4">
+                <p className="text-slate-300 leading-relaxed">
                   Semantic segmentation and pixel-level comparison for
                   land-cover classification and change mapping.
                 </p>

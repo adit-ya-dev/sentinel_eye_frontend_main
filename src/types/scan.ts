@@ -33,9 +33,7 @@ export interface DateRange {
   endDate: string;
 }
 
-// ────────────────────────────────────────────────
-// Consolidated ScanResult (ONLY ONE DEFINITION)
-// ────────────────────────────────────────────────
+
 export interface ScanResult {
   scanId: string;
   createdAt: string;
@@ -57,9 +55,6 @@ export interface ScanResult {
   meanNdvi?: number;
 }
 
-// ────────────────────────────────────────────────
-// Compact version used in list/dashboard view
-// ────────────────────────────────────────────────
 export interface Scan {
   id: string;
   regionName: string;

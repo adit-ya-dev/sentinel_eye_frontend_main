@@ -7,6 +7,7 @@ This document shows the exact implementation of the 3-step roadmap for connectin
 
 ### Step 1: Setup (Environment Variables)
 
+
 **File**: `.env.local`
 
 ```bash

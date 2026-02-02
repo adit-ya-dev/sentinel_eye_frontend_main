@@ -2,6 +2,7 @@
 
 ## Overview
 
+
 The frontend has been fully integrated with the AWS backend API. The integration follows a 3-step process:
 
 1. **Initialize Job** (POST /analyze) - Send coordinates to get a Job ID and S3 upload URL

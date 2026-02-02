@@ -6,6 +6,7 @@ Your AWS Lambda doesn't send CORS headers, causing browser to block requests wit
 Access-Control-Allow-Origin header missing
 ```
 
+
 ## The Solution
 Add CORS headers to **every response** from your Lambda function.
 

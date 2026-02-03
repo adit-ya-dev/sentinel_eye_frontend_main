@@ -146,6 +146,7 @@ If you don't want to modify Lambda code, enable CORS in API Gateway:
    - ✅ Access-Control-Allow-Origin: `*`
 4. Click **Enable CORS and replace existing CORS headers**
 
+
 ### Step 4: Deploy API
 1. Click **Actions** → **Deploy API**
 2. Deployment stage: Select your stage (probably `dev`)
